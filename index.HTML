@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geradores de Senha - Cartões Coloridos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            width: 100%;
+            gap: 10px; /* Espaçamento entre os cartões */
+            max-width: 1200px; /* Limite de largura para os cartões */
+        }
+
+        .card {
+            width: 180px;  /* Ajuste o tamanho dos cartões para serem menores */
+            height: 250px;
+            margin: 10px;
+            border-radius: 10px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .card-header {
+            width: 100%;
+            height: 70px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px; /* Espaço entre o título e a logo */
+        }
+
+        .card-header h3 {
+            font-size: 14px;
+            font-weight: bold;
+            margin: 0;
+            color: #fff; /* Cor do texto do nome */
+        }
+
+        .card-header img {
+            width: 100%;  /* Logo ocupa 100% do espaço do quadro */
+            height: 100%;  /* Logo ocupa 100% do espaço do quadro */
+            object-fit: contain;
+        }
+
+        .card-body {
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .password-display {
+            font-size: 16px;
+            margin-bottom: 10px;
+            min-height: 30px;
+            color: #333;
+        }
+
+        .generate-btn {
+            background-color: #f1c40f;
+            color: #333;
+            border: none;
+            padding: 10px 20px;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .generate-btn:hover {
+            background-color: #e67e22;
+        }
+
+        /* Responsividade para dispositivos menores */
+        @media (max-width: 900px) {
+            .card {
+                width: 150px; /* Menor tamanho para telas pequenas */
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card-container">
+        <!-- Cartões com logos e nome acima -->
+        <div class="card" style="background-color: #d50032;">
+            <div class="card-header">
+                <h3>Bradesco</h3>
+                <img src="bradesco-like-visa.png" alt="Logo Bradesco">
+            </div>
+            <div class="card-body">
+                <div class="password-display" id="password-display-1">
+                    <span id="generated-password-1">Clique para gerar uma senha</span>
+                </div>
+                <button onclick="gerarSenha(1)" class="generate-btn">Gerar Senha</button>
+            </div>
+        </div>
+
+        <div class="card" style="background-color: #8e24aa;">
+            <div class="card-header">
+                <h3>Nubank</h3>
+                <img src="dc6781ce48f2f0bf0997bac5a929af72.jpg" alt="Logo Nubank">
+            </div>
+            <div class="card-body">
+                <div class="password-display" id="password-display-2">
+                    <span id="generated-password-2">Clique para gerar uma senha</span>
+                </div>
+                <button onclick="gerarSenha(2)" class="generate-btn">Gerar Senha</button>
+            </div>
+        </div>
+
+        <div class="card" style="background-color: #3949ab;">
+            <div class="card-header">
+                <h3>Caixa Econômica</h3>
+                <img src="Numero-da-agencia-Caixa.png" alt="Logo Caixa Econômica">
+            </div>
+            <div class="card-body">
+                <div class="password-display" id="password-display-3">
+                    <span id="generated-password-3">Clique para gerar uma senha</span>
+                </div>
+                <button onclick="gerarSenha(3)" class="generate-btn">Gerar Senha</button>
+            </div>
+        </div>
+
+        <div class="card" style="background-color: #ff5900;">
+            <div class="card-header">
+                <h3>Itaú</h3>
+                <img src="click_cartão-digital.webp" alt="Logo Itaú">
+            </div>
+            <div class="card-body">
+                <div class="password-display" id="password-display-4">
+                    <span id="generated-password-4">Clique para gerar uma senha</span>
+                </div>
+                <button onclick="gerarSenha(4)" class="generate-btn">Gerar Senha</button>
+            </div>
+        </div>
+
+        <div class="card" style="background-color: #f6ff00;">
+            <div class="card-header">
+                <h3>Banco do Brasil</h3>
+                <img src="ourocard-facil.jpg" alt="Logo Banco do Brasil">
+            </div>
+            <div class="card-body">
+                <div class="password-display" id="password-display-5">
+                    <span id="generated-password-5">Clique para gerar uma senha</span>
+                </div>
+                <button onclick="gerarSenha(5)" class="generate-btn">Gerar Senha</button>
+            </div>
+        </div>
+
+        <div class="card" style="background-color: #ff0000;">
+            <div class="card-header">
+                <h3>Santander</h3>
+                <img src="747c0ef7f4b0bb3a11241392ce15425adad6_CARTAO-SX.png" alt="Logo Santander">
+            </div>
+            <div class="card-body">
+                <div class="password-display" id="password-display-6">
+                    <span id="generated-password-6">Clique para gerar uma senha</span>
+                </div>
+                <button onclick="gerarSenha(6)" class="generate-btn">Gerar Senha</button>
+            </div>
+        </div>
+
+        <div class="card" style="background-color: #00c8ff;">
+            <div class="card-header">
+                <h3>Neon</h3>
+                <img src="download.webp" alt="Logo Banco do Nordeste">
+            </div>
+            <div class="card-body">
+                <div class="password-display" id="password-display-7">
+                    <span id="generated-password-7">Clique para gerar uma senha</span>
+                </div>
+                <button onclick="gerarSenha(7)" class="generate-btn">Gerar Senha</button>
+            </div>
+        </div>
+
+        <div class="card" style="background-color: #00ff6a;">
+            <div class="card-header">
+                <h3>Picpay </h3>
+                <img src="cartao-de-credito-picpay-mastercard-platinum (1).png" alt="Logo Banco Pan">
+            </div>
+            <div class="card-body">
+                <div class="password-display" id="password-display-8">
+                    <span id="generated-password-8">Clique para gerar uma senha</span>
+                </div>
+                <button onclick="gerarSenha(8)" class="generate-btn">Gerar Senha</button>
+            </div>
+        </div>
+
+        <div class="card" style="background-color: #fbff00;">
+            <div class="card-header">
+                <h3>Will</h3>
+                <img src="cartao_de_credito_will_bank.webp" alt="Logo Bradesco">
+            </div>
+            <div class="card-body">
+                <div class="password-display" id="password-display-9">
+                    <span id="generated-password-9">Clique para gerar uma senha</span>
+                </div>
+                <button onclick="gerarSenha(9)" class="generate-btn">Gerar Senha</button>
+            </div>
+        </div>
+
+        <div class="card" style="background-color: #000000;">
+            <div class="card-header">
+                <h3>C6 Bank</h3>
+                <img src="cartao-c6-bank-carbon-15.webp" alt="Logo Banco Safra">
+            </div>
+            <div class="card-body">
+                <div class="password-display" id="password-display-10">
+                    <span id="generated-password-10">Clique para gerar uma senha</span>
+                </div>
+                <button onclick="gerarSenha(10)" class="generate-btn">Gerar Senha</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function gerarSenha(cardNumber) {
+            const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+[]{}|;:,.<>?";
+            let senha = "";
+            for (let i = 0; i < 12; i++) {
+                senha += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+
+            document.getElementById("generated-password-" + cardNumber).textContent = senha;
+        }
+    </script>
+
+</body>
+</html>
